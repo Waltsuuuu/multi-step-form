@@ -11,7 +11,6 @@ function App() {
           <p className="step-indicator-circle">3</p>
           <p className="step-indicator-circle">4</p>
         </div>
-
         <div className="personal-info-container">
           <h1>Personal info</h1>
           <p>Please provide your name, email, address, and phone number.</p>
@@ -44,8 +43,15 @@ function App() {
               required
             ></input>
           </form>
-        </div> {/* personal-info-container end */}
-      </div> {/* background-container end */}
+        </div>
+        {/* personal-info-container end */}
+
+
+        <div className="next-step-footer">
+          <button>Next Step</button>
+        </div>
+      </div>
+      {/* background-container end */}
     </>
   );
 }

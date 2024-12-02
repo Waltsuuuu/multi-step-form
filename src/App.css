@@ -1,5 +1,5 @@
 html {
-  width: 100%;
+  width: auto;
 }
 
 .background-container {
@@ -14,6 +14,7 @@ html {
      background-color: #EEF5FF;
 }
 
+/*STEP INDICATOR CONTAINER */
 .step-indicator-container {
   display: flex;
   flex-direction: row;
@@ -35,6 +36,7 @@ html {
   line-height: .5rem;
 }
 
+/* PERSONAL INFO CONTAINER */
 .personal-info-container {
   display: flex;
   flex-direction: column;
@@ -68,4 +70,24 @@ html {
   border: 1px solid #bdbdbd;
   border-radius: 5px;
   margin-bottom: 1rem;
+}
+
+/*NEXT-STEP-FOOTER*/
+.next-step-footer {
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  padding: 1rem 0 1rem 0;
+  bottom: 0;
+  text-align: right;
+}
+
+.next-step-footer button {
+  background-color: #042959;
+  color: white;
+  font-size: 1rem;
+  padding: .8rem 1rem 0.8rem 1rem;
+  border: none;
+  border-radius: 5px;
+  margin-right: 1rem;
 }
