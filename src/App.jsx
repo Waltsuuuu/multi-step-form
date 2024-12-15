@@ -1,57 +1,48 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
+import StepOne from "./components/StepOne";
+import StepTwo from "./components/StepTwo";
+import StepThree from "./components/StepThree";
+import StepFour from "./components/StepFour";
+import StepIndicator from "./components/StepIndicator";
+import Footer from "./components/Footer";
 
 function App() {
+  const [activeStep, setActiveStep] = useState(1);
+
+  const handlePrevStep = () => {
+    setActiveStep((prevStep) => {
+      if (prevStep > 1) {
+        return prevStep - 1; // Prevent going below 1
+      }
+      return prevStep; // If already at step 1, stay at step 1
+    });
+  };
+
+  const handleNextStep = () => {
+    setActiveStep((prevStep) => {
+      if (prevStep < 4) {
+        return prevStep + 1; // Prevent going above 4
+      }
+      return prevStep; // If already at step 4, stay at step 4
+    });
+  };
+
+  // Log the current step whenever it changes
+  useEffect(() => {
+    console.log(`Current step: ${activeStep}`);
+  }, [activeStep]);
+
   return (
     <>
-      <div className="background-container">
-        <div className="step-indicator-container">
-          <p className="step-indicator-circle">1</p>
-          <p className="step-indicator-circle">2</p>
-          <p className="step-indicator-circle">3</p>
-          <p className="step-indicator-circle">4</p>
-        </div>
-        <div className="personal-info-container">
-          <h1>Personal info</h1>
-          <p>Please provide your name, email, address, and phone number.</p>
-
-          <form className="personal-info-form">
-            <label>Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="eg. Stephen king"
-              required
-            ></input>
-
-            <label>Email Address</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="eg. stephenking@lorem.com"
-              required
-            ></input>
-
-            <label>Phone</label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="eg. +1 234 567 890"
-              required
-            ></input>
-          </form>
-        </div>
-        {/* personal-info-container end */}
-
-
-        <div className="next-step-footer">
-          <button>Next Step</button>
-        </div>
-      </div>
-      {/* background-container end */}
+    <div className="background-container">
+      <StepIndicator activeStep={activeStep} />
+        <StepOne activeStep={activeStep} />
+        <StepTwo activeStep={activeStep} />
+        <StepThree activeStep={activeStep} />
+        <StepFour activeStep={activeStep} />
+      <Footer activeStep={activeStep} handleNextStep={handleNextStep} handlePrevStep={handlePrevStep}/>
+    </div>
     </>
   );
 }
